@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4A3728">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./icon.svg">
+<title>Plánování brigád</title>
+<style>
+  html,body{margin:0;padding:0;height:100%;background:#4A3728;overflow:hidden}
+  iframe{display:block;border:0;width:100%;height:100%}
+</style>
+</head>
+<body>
+<!--
+  Stranka jen obaluje aplikaci z Apps Scriptu.
+  Diky tomu zmizi modry pruh "Tato aplikace byla vytvorena uzivatelem
+  Google Apps Scriptu", ktery Google pridava jen pri primem otevreni.
+  Adresa: https://ja-barista.github.io/dochazka/brigady/
+-->
+<iframe
+  src="https://script.google.com/macros/s/AKfycbz_uQBx0zuJS5V4YyWATWWBYpKt1vpzvwlhNP7j9rbc2W2YauxOR8SL4YtM8x9X4FAT/exec?ak=PLAN"
+  allow="clipboard-write"></iframe>
+
+<script>
+  // Bez service workeru Chrome nenabidne instalaci na plochu.
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('./sw.js').catch(function () {});
+    });
+  }
+</script>
+</body>
+</html>
